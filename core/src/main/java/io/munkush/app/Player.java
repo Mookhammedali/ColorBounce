@@ -6,37 +6,39 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Player {
     private final ShapeRenderer shapeRenderer;
-    private float x = 220;
-    private float y = 190;
-    private final float width = 200;
-    private final float height = 100;
-    private Color color = Color.RED;
+    private final float width;
+    private final float height;
+    private float x;
+    private float y;
+    private Color color;
 
     private boolean isMovingTop;
-    private boolean isMovingBottom = false;
+    private boolean isMovingBottom;
     private boolean isMovingLeft;
-    private boolean isMovingRight = false;
+    private boolean isMovingRight;
 
+    public Player(float width, float height, Color color) {
+        isMovingTop = true;
+        isMovingRight = true;
 
-
-    public Player() {
         this.shapeRenderer = new ShapeRenderer();
-        this.isMovingLeft = true;
-        this.isMovingTop = true;
-    }
 
+        this.height = height;
+        this.width = width;
+        this.color = color;
+
+        this.x = SizeUtils.getCenterX(width);
+        this.y = SizeUtils.getCenterY(height);
+    }
     public void render(){
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(this.color);
+        shapeRenderer.setColor(color);
         shapeRenderer.rect(x, y, width, height);
         shapeRenderer.end();
     }
-
     public void dispose(){
         shapeRenderer.dispose();
     }
-
-
     public void startMoving(){
         if(isMovingTop){
             if(hasReachedTop()){
@@ -76,39 +78,31 @@ public class Player {
     public void moveTop(){
         y++;
     }
-
     public void moveBottom(){
         y--;
     }
     public void moveRight(){
         x++;
     }
-
     public void moveLeft(){
         x--;
     }
-
     private void changeToRandomColor() {
         float r = (float) Math.random();
         float g = (float) Math.random();
         float b = (float) Math.random();
         this.color = new Color(r, g, b, 1f);
     }
-
     private boolean hasReachedTop() {
         return y + height >= Window.HEIGHT;
     }
-
     private boolean hasReachedBottom() {
         return y <= 0;
     }
-
     private boolean hasReachedLeft() {
         return x <= 0;
     }
-
     private boolean hasReachedRight() {
         return x + width >= Window.WIDTH;
     }
-
 }

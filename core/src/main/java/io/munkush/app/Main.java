@@ -2,6 +2,7 @@ package io.munkush.app;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 
 public class Main extends ApplicationAdapter {
@@ -10,7 +11,7 @@ public class Main extends ApplicationAdapter {
 
     @Override
     public void create() {
-        player = new Player();
+        player = new Player(125, 75, Color.RED);
     }
 
     @Override
@@ -20,7 +21,6 @@ public class Main extends ApplicationAdapter {
 
         player.render();
         player.startMoving();
-
     }
 
     @Override
