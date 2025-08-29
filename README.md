@@ -17,3 +17,6 @@ It shows a rectangle moving across the screen, bouncing off the window edges, an
 1. Clone this repository:
    ```bash
    git clone https://github.com/Mookhammedali/ColorBounce.git
+2) Open the project in IntelliJ IDEA or any Java IDE.
+
+3) Run the Lwjgl3Launcher class to start the desktop app.
